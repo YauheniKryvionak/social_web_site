@@ -60,7 +60,7 @@ def post_share(request, post_id):
         if form.is_valid():
             # Поля формы успешно прошли валидацию
             cd = form.cleaned_data
-            post_url = request.build_absolute_uri(
+            post_url = request.build_absolute_url(
                 post.get_absolute_url()
             )
             subject = f"{cd['name']} recommends you read {post.title}"
