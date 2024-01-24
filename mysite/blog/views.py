@@ -60,14 +60,14 @@ def post_share(request, post_id):
         if form.is_valid():
             # Поля формы успешно прошли валидацию
             cd = form.cleaned_data
-            post_url = request.build_absolute_url(
-                post.get_absolute_url()
-            )
+            post_url = request.build_absolute_uri(
+                post.get_absolute_url())
             subject = f"{cd['name']} recommends you read {post.title}"
             message = f"Read {post.title} at {post_url}\n\n" \
                       f"{cd['name']}\'s comments: {cd['comments']}"
             send_mail(subject, message, 'jinchik12345@gmail.com',
-                      [cd['krivenok_80@mail.ru']])
+                      [cd['to']]
+                      )
             sent = True
     else:
         form = EmailPostForm()
