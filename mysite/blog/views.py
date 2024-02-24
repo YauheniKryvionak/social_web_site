@@ -6,6 +6,7 @@ from .forms import EmailPostForm, CommentForm
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
 
+
 # def post_list(request):
 #     post_list = Post.published.all()
 #     # Pagination with 3 posts per page
@@ -74,6 +75,7 @@ def post_share(request, post_id):
     return render(request, 'blog/post/share.html', {'post': post,
                                                     'form': form,
                                                     'sent': sent})
+
 
 @require_POST
 def post_comment(request, post_id):
